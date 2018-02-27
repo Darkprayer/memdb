@@ -76,7 +76,12 @@ if (require.main === module) {
         // prevent from exit
         process.on('SIGTERM', function(){});
         process.on('SIGINT', function(){});
-        setTimeout(function(){}, 100000000);
+
+        //Original
+        //setTimeout(function(){}, 100000000);
+
+        //MakeTimeout Shorter
+        setTimeout(function(){}, 5000);
 
         return;
     }
@@ -90,7 +95,8 @@ if (require.main === module) {
         // send signal to parent process
         var parentPid = process.env.__parentPid;
         if(parentPid){
-            process.kill(parentPid, 'SIGUSR2');
+            //Original
+            //process.kill(parentPid, 'SIGUSR2');
         }
     }, function(e){
         console.error(e.stack ? e.stack : e);
