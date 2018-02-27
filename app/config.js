@@ -27,7 +27,10 @@ var _config = null;
 
 exports.init = function(confPath, shardId){
     var searchPaths = [];
-    var homePath = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+    //Original
+    //var homePath = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+    // Change Default Order
+    var homePath = process.env.HOME || process.env.USERPROFILE || process.env.HOMEPATH;
 
     var localDataPath = path.join(homePath, '.memdb');
     mkdirp(localDataPath);

@@ -52,6 +52,10 @@ var stop = function(shardConfig){
                     sleep 0.2;\
                   done;\
                fi';
+    // Add Windows Platform Support
+    if (process.platform == 'win32') {
+        cmd = "taskkill -f -pid $(netstat -ano | findstr :%s.*LISTENING | awk '{print $5}') 2>/dev/null; exit 0";
+    }
 
     cmd = util.format(cmd, shardConfig.port);
     return utils.remoteExec(shardConfig.host, cmd, {user : shardConfig.user});
